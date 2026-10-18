@@ -1,13 +1,9 @@
-import { setServers } from "node:dns";
 import { MongoClient } from "mongodb";
-
-// Use Google DNS to resolve MongoDB SRV records.
-setServers(["8.8.8.8", "8.8.4.4"]);
 
 const uri = process.env.MONGODB_URI;
 
 if (!uri) {
-  throw new Error("MONGODB_URI is missing from .env.local");
+  throw new Error("Please add MONGODB_URI to your environment variables");
 }
 
 const options = {};
