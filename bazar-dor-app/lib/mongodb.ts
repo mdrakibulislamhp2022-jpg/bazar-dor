@@ -6,12 +6,14 @@ if (!uri) {
   throw new Error("MONGODB_URI is missing");
 }
 
+const options = {};
+
 declare global {
   var _mongoClient: MongoClient | undefined;
 }
 
 const client =
-  global._mongoClient ?? new MongoClient(uri);
+  global._mongoClient ?? new MongoClient(uri, options);
 
 if (process.env.NODE_ENV !== "production") {
   global._mongoClient = client;
